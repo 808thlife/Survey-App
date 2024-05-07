@@ -1,0 +1,25 @@
+{% extends "core/layout.html" %}
+{% block body %}
+<div class="page-wrapper">
+    <div class = "container-fluid">
+
+        <ol class="list-group list-group-numbered">
+            {% for survey in surveys %}
+            <a href="{% url "core:surveyView" survey.id %}" class = "link link-light">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{survey.question}}</div>
+                       
+                    </div>
+                    <span class ="text-danger">Wasn't Answered</span>
+                </li>
+            </a>
+           
+            {% endfor %}
+            
+        </ol>
+
+    </div>
+    
+</div>
+{% endblock body %}
