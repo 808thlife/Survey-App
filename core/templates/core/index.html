@@ -33,13 +33,22 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-               
+                    {% if alert %}
                     <div class="alert alert-danger" role="alert">
                         <h4 class="alert-heading">You have not provided answer to survey.</h4>
                         <p>Please, proceed to All Surveys page</p>
                         <hr>
                         <p class="mb-0">You answer the surveys in order to remove this alert from the page</p>
                     </div>
+                    {% else %}
+                    <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading">You are good to go.</h4>
+                        <p>You have already answered all the surveys</p>
+                        <hr>
+                        <p class="mb-0">This alert indicates that you have no surveys left</p>
+                    </div>
+                    {% endif %}
+                    
                 
             
                 
