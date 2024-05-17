@@ -11,7 +11,7 @@ def validate_surveys():
 
     for survey in Survey.objects.filter(expired = False):
         expected_due_date = survey.timestamp + timedelta(days=survey.frequency) # gets expected due date
-        if expected_due_date >= today:
+        if expected_due_date <= today:
 
             check_surveys = Survey.objects.filter(question = f"{survey.question} on {expected_due_date}")
             if len(check_surveys) == 0:
