@@ -3,7 +3,6 @@ from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-
 from accounts.models import User
 from questions.models import Survey, Answer
 from questions import utils
@@ -39,6 +38,12 @@ def surveyView(request, ID):
         return HttpResponseRedirect(reverse("core:inbox"))
     context = {"survey":survey, "users":users}
     return render(request, "core/survey.html", context)
+
+def profileView(request, username):
+    user = User.objects.get(username = username)
+    surveys = Answer.objects.filter(user = user)
+    context = {"user":user}
+    return render(request, "core/pages-profile.html")
 
 def loginView(request):
     return render(request, "core/authentication-login1.html")
